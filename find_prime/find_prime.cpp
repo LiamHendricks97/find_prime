@@ -14,14 +14,16 @@ int main()
 	std::cout << "Enter a number to see all the primes leading up to it: ";
 
 	// Maximum number that primes will be calulated to
-	int max_num{};
-	std::cin >> max_num;
+	int max_num{1'000'000};
+	//std::cin >> max_num;
 
 	while (vector_primes.back() < max_num)
 	{		
 		for (unsigned i{ 0 }; i < vector_primes.size(); i++) {
 			//Test output stream
-			//std::cout << "if: " << vector_primes.back() << "	%	" << vector_primes[i] << "	== 0 &&	" << vector_primes.back() << "	!=	" << vector_primes[i] << "	:bool:" << (vector_primes.back() % vector_primes[i] == 0 && vector_primes.back() != vector_primes[i]) << std::endl;
+			//std::cout << "if: " << vector_primes.back() << "	%	" << vector_primes[i] << "	== 0 &&	" << vector_primes.back() << "	!=	" << vector_primes[i] 
+			//	<< "	:bool:" << (vector_primes.back() % vector_primes[i] == 0 && vector_primes.back() != vector_primes[i]) 
+			//	<< "	:Equalib factor:" << (vector_primes.back() / vector_primes[i] < vector_primes[i]) << std::endl;
 
 			if (vector_primes.back() % vector_primes[i] == 0 && vector_primes.back() != vector_primes[i] )
 			{
@@ -30,7 +32,13 @@ int main()
 				//Study above erase
 				break;
 			}
-			else if (vector_primes.back() == vector_primes[i] || vector_primes.back() / vector_primes[i] < vector_primes[i]) {
+
+			else if (vector_primes.back() / vector_primes[i] < vector_primes[i]){
+				vector_primes.push_back(vector_primes.back() + 2);
+				break;
+			}
+
+			else if (vector_primes.back() == vector_primes[i]) {
 				//Why didnt the above or statement work with a for pointer vector? -----> for (vector_prime : vectorprimes)
 				vector_primes.push_back(vector_primes.back() + 2);
 				break;
@@ -45,10 +53,16 @@ int main()
 	}*/
 	//std::cout << "\nTest numbers: " << "3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149" << std::endl << std::endl;
 
+	//Show max_num
+	std::cout << "\nmax_num used: " << max_num << std::endl;
+
 	//Show last primes
 	std::cout << "\nLast five primes (-1 explicitly not included)" << std::endl;
 	for (int i{-2}; i > -7; i--)
 		std::cout << "Index: " << i  << ": "<< vector_primes.end()[i] << std::endl;
+
+	//Total primes within vector
+	std::cout << "\nPrimes within vector: " << vector_primes.size() << std::endl;
 
 
 	//Timer
