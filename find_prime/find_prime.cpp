@@ -11,11 +11,11 @@ int main()
 
 	// Initial vector of primes
 	std::vector <int> vector_primes{ 3, 5, 7 };
-	std::cout << "Enter a number to see all the primes leading up to it: " << std::endl;
+	std::cout << "Enter a number to see all the primes leading up to it: ";
 
 	// Maximum number that primes will be calulated to
-	int max_num{1'000'000};
-	//std::cin >> max_num;
+	int max_num{};
+	std::cin >> max_num;
 
 	while (vector_primes.back() < max_num)
 	{		
